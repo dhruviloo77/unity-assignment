@@ -7,60 +7,83 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Assignment
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project performs basic CRUD operations using Laravel 8. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Tech Stack Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 7.4.9
+- Laravel 8
+- JavaScript
+- Bootstrap
+- MySQL
 
-## Learning Laravel
+### To run the application
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Change the .env according to local variables (DB NAME, USER & PORT)
+- Create database `unity_payments`
+- Run `php artisan migrate` to crate tables
+- Run `php artisan serve` to run the app on the browser. Alternatively you use WAMP or Linux Server
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Below are the snapshot of the application
 
-## Laravel Sponsors
+## Users Page 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+In this page, you can create user, edit user data and delete the user
 
-### Premium Partners
+![image](https://user-images.githubusercontent.com/36239404/148715937-b61d6f31-134e-4b7c-b035-6311ca2d5a52.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+### Add User
 
-## Contributing
+When you click submit, new user gets added into database and you get confirmation image that new user has been added
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+![image](https://user-images.githubusercontent.com/36239404/148716081-32a9b22b-dfe8-4986-a182-d30debd79021.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![image](https://user-images.githubusercontent.com/36239404/148716156-1fc14036-a6f9-4897-865b-f9f4d4ba7dfa.png)
 
-## Security Vulnerabilities
+> **Validation** :
+> If the Id or Name column is left empty, system doesn't insert the data and return error message
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![image](https://user-images.githubusercontent.com/36239404/148716275-fcb343db-605a-4a12-96c4-4b0004f42061.png)
 
-## License
+### Edit User
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Editing user updates the database record and return confirmation message when after update
+
+![image](https://user-images.githubusercontent.com/36239404/148716392-073442b8-997d-4062-9ebc-03598299095b.png)
+
+![image](https://user-images.githubusercontent.com/36239404/148716411-6b04289c-1ca7-4f99-a80b-237db155367d.png)
+
+### Delete User
+
+Deleting user delete the database record and return confirmation message after deletion. Also it updates the page with live data.
+
+![image](https://user-images.githubusercontent.com/36239404/148716486-4d27e2ad-487d-40c3-92c7-3274bf6d94bf.png)
+
+![image](https://user-images.githubusercontent.com/36239404/148716504-8a88ae18-851e-4600-a918-b7b960e8271a.png)
+
+
+
+## Company Page
+
+This page operates exactly same CRUD operation as Users Page with one additional feature. 
+
+- You can add users to the company
+
+![image](https://user-images.githubusercontent.com/36239404/148716567-27066b8c-5ab2-4503-8941-f2233fa34fc6.png)
+
+![image](https://user-images.githubusercontent.com/36239404/148716711-5b651735-fe41-4c32-8550-3cf599598951.png)
+
+- Multiple users can be attached to same company
+
+![image](https://user-images.githubusercontent.com/36239404/148716771-90de61d6-f15c-46ab-a7ae-2d7e997dfa73.png)
+
+
+
+
+
+
+
+

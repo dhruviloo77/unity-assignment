@@ -49,5 +49,15 @@ class CompanyController extends Controller
         return redirect('companies')->with(['message' => 'Company Successfully Deleted.']);
     }
 
+    public function addUserToCompany($id, Request $request) {
+
+        $user = User::find($request->user_id);
+        $user->company_id = $id;
+
+        $user->update();
+        return redirect('companies')->with(['message' => 'User Successfully Added.']);
+
+    }
+
 
 }

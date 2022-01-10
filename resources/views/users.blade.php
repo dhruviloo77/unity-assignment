@@ -23,6 +23,7 @@
 <nav class="navbar navbar-dark bg-dark">
 
     <a class="navbar-brand" href="{{ url('/') }}">Users</a>
+    <label class="nav justify-content-center text-white">Unity Payments</label>
     <a class="nav-item nav-link" href="{{ url('companies') }}">Companies</a>
     
 </nav>
@@ -35,7 +36,8 @@
     </div>
 @endif
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#user-add">Add User</button>
+<br>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#user-add">Add User</button>
 
     <table id="users" style="display" class="table table-striped table-bordered" >
 
@@ -52,8 +54,8 @@
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#user-edit-{{ $user->id }}">Edit</button></td>
-                        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#user-delete-{{ $user->id }}">Delete</button></td>
+                        <td> <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#user-edit-{{ $user->id }}">Edit</button></td>
+                        <td> <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#user-delete-{{ $user->id }}">Delete</button></td>
                     </tr>
 
                      <!-- Modal Edit-->
@@ -77,8 +79,9 @@
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input name="uname" value="{{ $user->name }}" type="text" class="form-control">
+                                        <small class="text-danger">{{ $errors->first('uname') }}</small>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-warning">Submit</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </form>
                             </div>
@@ -91,7 +94,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Edit User</h5>
+                                    <h5 class="modal-title">Delete User</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -99,7 +102,7 @@
                             <div class="modal-body">
                                 <form name="user_delete" action="{{ route('deleteUser', $user->id) }}">
                                 @csrf 
-                                    <button type="submit" class="btn btn-delete">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </form>
                             </div>
@@ -131,8 +134,9 @@
                         <div class="form-group">
                             <label>Name</label>
                             <input name="uname" type="text" class="form-control" placeholder="Enter Name">
+                            <small class="text-danger">{{ $errors->first('uname') }}</small>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </form>
                 </div>

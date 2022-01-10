@@ -29,5 +29,7 @@ Route::get('companies/edit/{id}', 'App\Http\Controllers\CompanyController@update
 
 Route::get('companies/delete/{id}', 'App\Http\Controllers\CompanyController@delete')->name('deleteCompany');
 
+Route::get('companies/addUser/{id}', 'App\Http\Controllers\CompanyController@addUserToCompany')->name('addUserToCompany');
+
 
 

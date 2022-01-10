@@ -16,6 +16,8 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('user_id')->unsigned()->nullable();;
+            $table->foreign('user_id')->references('id')->on('users')->nullable();;
             $table->timestamps();
         });
     }

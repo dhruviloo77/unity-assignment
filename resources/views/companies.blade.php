@@ -21,7 +21,7 @@
 <body>
 
 <nav class="navbar navbar-dark bg-dark">
-    
+
     <a class="nav-item nav-link" href="{{ url('/') }}">Users</a>
         
     <a class="navbar-brand" href="{{ url('companies') }}">Companies</a>
@@ -36,7 +36,9 @@
     </div>
 @endif
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#company-add">Add Company</button>
+<br>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#company-add">Add Company</button>
+<br>
 
     <table id="companies" style="display" class="table table-striped table-bordered" >
 
@@ -51,13 +53,15 @@
         </thead>
             <tbody>
                 @foreach($companies as $company)
+                   
                     <tr>
                         <td>{{ $company->id }}</td>
-                        <td>{{ $company->name }}</td>
-                        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#users-add-{{ $company->id }}">Add Users</button></td>
-                        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#company-edit-{{ $company->id }}">Edit</button></td>
-                        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#company-delete-{{ $company->id }}">Delete</button></td>
+                        <td>{{ $company->name }}</td>   
+                        <td> <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#users-add-{{ $company->id }}" >Add Users</button> </td>                       
+                        <td> <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#company-edit-{{ $company->id }}">Edit</button></td>
+                        <td> <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#company-delete-{{ $company->id }}">Delete</button></td>
                     </tr>
+              
 
                      <!-- Modal Edit-->
                     <div class="modal fade" id="company-edit-{{{ $company->id }}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -80,18 +84,19 @@
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input name="cname" value="{{ $company->name }}" type="text" class="form-control">
+                                        <small class="text-danger">{{ $errors->first('cname') }}</small>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-warning">Submit</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </form>
                             </div>
                             </div>
                         </div>
-                    </div>
-
+                    </div>              
+                    
                     <!-- Modal Add User to Company-->
-
-                    <div class="modal fade" id="users-add-{{{ $company->id }}}" tabindex="-1" role="dialog" aria-hidden="true">
+                           
+                    <div class="modal fade"  id="users-add-{{ $company->id }}"  tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -101,14 +106,14 @@
                                     </button>
                                 </div>
                             <div class="modal-body">
-                                <form name="company_edit" action="{{ route('editCompany', $company->id) }}">
+                                <form name="user_add" action="{{ route('addUserToCompany', $company->id) }}">
                                 @csrf 
+                                @foreach($users as $user)
                                     <div class="form-group">
-                                        @foreach($users as $user)
                                             <label>{{ $user->name }}</label>
-                                            <input class="d-inline" name="uname" type="checkbox" value="{{ $user->name }}" type="text" class="form-control">
-                                        @endforeach
+                                            <input class="d-inline" name="user_id" @if($user->company_id ==  $company->id) checked @endif value="{{$user->id}}" type="checkbox" type="text" class="form-control"> <br>
                                     </div>
+                                @endforeach
                                     <button type="submit" class="btn btn-primary">Save</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </form>
@@ -130,7 +135,7 @@
                             <div class="modal-body">
                                 <form name="company_delete" action="{{ route('deleteCompany', $company->id) }}">
                                 @csrf 
-                                    <button type="submit" class="btn btn-delete">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </form>
                             </div>
@@ -162,8 +167,9 @@
                         <div class="form-group">
                             <label>Name</label>
                             <input name="cname" type="text" class="form-control" placeholder="Enter Name">
+                            <small class="text-danger">{{ $errors->first('cname') }}</small>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </form>
                 </div>
@@ -171,6 +177,10 @@
             </div>
         </div>
 
+        
+
+                   
+        
        
             
 </body>
